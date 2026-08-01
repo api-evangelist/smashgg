@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/sending-requests
+docs: https://developer.start.gg/docs/intro
+api_style: graphql
+endpoint:
+  url: https://api.start.gg/gql/alpha
+  note: >-
+    Single GraphQL endpoint (versioned as "alpha" in the path). Replaces the
+    provider's retired REST API.
+transport:
+  methods: [POST, GET]
+  recommended: POST
+  content_type: application/json
+  body_shape: '{ "query": "...", "operationName": "...", "variables": { ... } }'
+  notes: operationName and variables are optional; operationName is only used when multiple queries are present.
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer [token]'
+  ref: authentication/smashgg-authentication.yml
+pagination:
+  style: relay-connection
+  pattern: >-
+    List fields return *Connection objects (e.g. TournamentConnection,
+    EventConnection, SetConnection) exposing nodes and a pageInfo object.
+    Callers pass page/perPage-style pagination query inputs
+    (e.g. TournamentQuery, SetFilters).
+  page_info_type: PageInfo
+idempotency:
+  supported: false
+  notes: >-
+    start.gg does not document an idempotency-key mechanism. GraphQL mutations
+    (e.g. reportBracketSet) are not idempotent by contract.
+rate_limiting:
+  request_rate: 80 requests per 60 seconds (average)
+  complexity_limit: 1000 objects per request (including nested objects)
+  ref: rate-limits/smashgg-rate-limits.yml
+error_envelope:
+  shape: '{ "success": false, "message": "...", "fields": null }'
+  format: custom-json
+  note: Not RFC 9457. GraphQL field errors return in the standard GraphQL "errors" array.
+  ref: errors/smashgg-error-codes.yml
+versioning:
+  scheme: path-segment
+  current: alpha
+  ref: lifecycle/smashgg-lifecycle.yml

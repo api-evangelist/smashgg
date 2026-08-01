@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/rate-limits
+format: custom-json
+envelope:
+  fields:
+    success: boolean (false on error)
+    message: human-readable error string
+    fields: usually null
+  graphql_errors: >-
+    GraphQL-level validation/execution errors are also returned in the standard
+    GraphQL top-level "errors" array alongside/instead of this envelope.
+errors:
+  - name: rate-limit-exceeded
+    envelope_message: Rate limit exceeded - api-token
+    cause: More than 80 requests averaged per 60 seconds on the api-token.
+    remediation: Throttle client to stay under 80 req / 60s.
+    ref: rate-limits/smashgg-rate-limits.yml
+  - name: query-complexity-too-high
+    envelope_message: >-
+      Query complexity too high. A maximum of 1000 objects may be returned by
+      each request.
+    cause: A single request requested more than 1000 objects (including nested).
+    remediation: Reduce perPage/page sizes and nested selection sets; paginate.
+    ref: rate-limits/smashgg-rate-limits.yml
+  - name: oauth-missing-code
+    envelope_message: 'OAuth login failed. Please restart flow. Error: missing code'
+    cause: OAuth redirect returned without a code query parameter.
+    remediation: Restart the authorization-code flow.
+    ref: authentication/smashgg-authentication.yml
+notes: >-
+  Derived from the documented error responses on the rate-limits and OAuth
+  pages. start.gg does not publish an exhaustive numeric error-code registry;
+  most operational errors surface as GraphQL execution errors.

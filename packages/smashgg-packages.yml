@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: npm + PyPI registry probes 2026-07-21
+notes: >-
+  start.gg publishes NO official first-party SDK for its GraphQL API - the
+  smashgg GitHub org contains only forks and internal tooling, and the docs
+  point developers at the raw GraphQL endpoint. The libraries below are
+  community-maintained wrappers (official: false), verified live on their
+  registries. No SDKs pointer is emitted because none are first-party.
+packages:
+  - language: python
+    registry: pypi
+    name: pysmashgg
+    url: https://pypi.org/project/pysmashgg/
+    install: pip install pysmashgg
+    official: false
+  - language: python
+    registry: pypi
+    name: startgg
+    url: https://pypi.org/project/startgg/
+    install: pip install startgg
+    official: false
+  - language: javascript
+    registry: npm
+    name: smashgg.js
+    url: https://www.npmjs.com/package/smashgg.js
+    install: npm install smashgg.js
+    official: false

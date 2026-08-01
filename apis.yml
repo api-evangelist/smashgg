@@ -1,7 +1,20 @@
 aid: smashgg
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 name: Smashgg
-description: 'Smashgg is a company surfaced as a portfolio company of accel and added to the API Evangelist
-  network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Smashgg (now start.gg, following its acquisition by Microsoft) is a
+  competitive-gaming and esports platform for running tournaments, brackets, and
+  leagues across fighting games and other titles. Its public developer API is a
+  single GraphQL endpoint (https://api.start.gg/gql/alpha) exposing tournaments,
+  events, entrants, sets, phases, standings, players, and users, plus mutations
+  for reporting set results and managing seeding and brackets. Authentication is
+  via personal access tokens (Bearer, 1-year expiry) or OAuth 2.0
+  authorization-code tokens scoped to a user. The original smash.gg domain now
+  redirects to start.gg.
 url: https://raw.githubusercontent.com/api-evangelist/smashgg/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,13 +22,48 @@ x-backed-by:
 - accel
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Consumer
-apis: []
+- Esports
+- Gaming
+- Tournaments
+- GraphQL
+- Events
+- Developer API
+image: https://www.start.gg/favicon.ico
+apis:
+- name: start.gg GraphQL API
+  description: >-
+    Single GraphQL endpoint exposing start.gg (smash.gg) tournaments, events,
+    entrants, sets, standings, players, and users, with mutations for reporting
+    results and managing brackets.
+  humanURL: https://developer.start.gg
+  baseURL: https://api.start.gg/gql/alpha
+  tags:
+  - GraphQL
+  - Esports
+  - Tournaments
+  properties:
+  - type: GraphQL
+    url: https://developer.start.gg/reference
+  - type: APIExplorer
+    url: https://developer.start.gg/explorer
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,4 +71,52 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://www.smash.gg
+  url: https://www.start.gg
+- type: DeveloperPortal
+  url: https://developer.start.gg
+- type: Documentation
+  url: https://developer.start.gg/docs/intro
+- type: APIReference
+  url: https://developer.start.gg/reference
+- type: GettingStarted
+  url: https://developer.start.gg/docs/intro
+- type: Authentication
+  url: authentication/smashgg-authentication.yml
+- type: OAuthScopes
+  url: scopes/smashgg-scopes.yml
+- type: Conventions
+  url: conventions/smashgg-conventions.yml
+- type: RateLimits
+  url: rate-limits/smashgg-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/smashgg-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/smashgg-lifecycle.yml
+- type: DomainSecurity
+  url: security/smashgg-domain-security.yml
+- type: Components
+  url: components/smashgg-components.yml
+- type: Packages
+  url: packages/smashgg-packages.yml
+- type: DataModel
+  url: data-model/smashgg-data-model.yml
+- type: Conformance
+  url: conformance/smashgg-conformance.yml
+- type: MCPServer
+  url: mcp/smashgg-mcp.yml
+- type: LLMsTxt
+  url: llms/smashgg-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Support
+  url: https://help.start.gg
+- type: Blog
+  url: https://blog.start.gg/
+- type: GitHubOrganization
+  url: https://github.com/smashgg
+- type: Login
+  url: https://www.start.gg/login
+- type: TermsOfService
+  url: https://www.start.gg/about/tos
+- type: PrivacyPolicy
+  url: https://www.start.gg/about/privacy

@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: probed
+source: TLS handshake + HTTP HEAD + dig (probed 2026-07-21)
+hosts:
+  - host: api.start.gg
+    https: true
+    tls_version: TLSv1.3
+    hsts: true
+    hsts_max_age: 15724800
+    hsts_include_subdomains: true
+  - host: developer.start.gg
+    https: true
+    hsts: true
+    hsts_max_age: 31536000
+    hsts_include_subdomains: false
+  - host: www.start.gg
+    https: true
+    hsts: false
+domains:
+  - domain: start.gg
+    dnssec: false
+    caa:
+      - digicert.com
+      - letsencrypt.org
+      - pki.goog
+      - ssl.com
+      - comodoca.com
+      - microsoft.com
+    spf: true
+    spf_record: 'v=spf1 include:amazonses.com include:servers.mcsv.net include:_spf.google.com -all'
+    dmarc: true
+    dmarc_policy: reject
+notes: >-
+  start.gg (smash.gg's successor; smash.gg 301-redirects to www.start.gg) is a
+  Microsoft property - the CAA record authorizes microsoft.com as a certificate
+  issuer. DMARC is enforced (p=reject). DNSSEC is not enabled.

@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://developer.start.gg/reference (GraphQL schema + documented examples)
+notes: >-
+  No official hosted/remote MCP server is published by start.gg. This is a
+  DERIVED candidate tool list mapping documented GraphQL operations to MCP
+  tools, grounded in real query/mutation fields from the schema and example
+  pages. Not a provider claim.
+server:
+  name: smashgg
+  transport: http
+  endpoint: https://api.start.gg/gql/alpha
+  auth: bearer-token
+tools:
+  - name: get_tournament
+    description: Look up a tournament by slug and read its events and participants.
+    source_operation: 'graphql:Query.tournament'
+  - name: get_event
+    description: Look up an event by slug (returns id, name, entrants, standings).
+    source_operation: 'graphql:Query.event'
+  - name: list_event_entrants
+    description: Page through the entrants registered for an event.
+    source_operation: 'graphql:Query.event.entrants'
+  - name: get_event_standings
+    description: Read final/current standings for an event.
+    source_operation: 'graphql:Query.event.standings'
+  - name: get_current_user
+    description: Read the authenticated user's profile (requires user.identity scope).
+    source_operation: 'graphql:Query.currentUser'
+  - name: get_league
+    description: Look up a league and its events.
+    source_operation: 'graphql:Query.league'
+  - name: get_videogame
+    description: Resolve a videogame id/characters by name.
+    source_operation: 'graphql:Query.videogame'
+  - name: report_set
+    description: Report a set/match result (winner, optional game data). Requires tournament.reporter scope.
+    source_operation: 'graphql:Mutation.reportBracketSet'

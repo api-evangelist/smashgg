@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: derived
+source: https://developer.start.gg/reference (GraphQL schema documentation)
+notes: >-
+  Entity graph derived from the published GraphQL schema object types and the
+  documented query/mutation examples. Relationships reflect the schema's
+  Connection types and id-reference fields.
+entities:
+  - name: Tournament
+    description: A tournament event container; addressed by slug (e.g. tournament/genesis-9-1).
+    relationships:
+      - {kind: has_many, target: Event, via: events}
+      - {kind: has_many, target: Participant, via: participants}
+      - {kind: has_one, target: EventOwner, via: owner}
+  - name: League
+    relationships:
+      - {kind: has_many, target: Event, via: events}
+  - name: Event
+    description: A single competition within a tournament (e.g. Ultimate Singles); addressed by slug.
+    relationships:
+      - {kind: belongs_to, target: Tournament, via: tournament}
+      - {kind: has_many, target: Entrant, via: entrants}
+      - {kind: has_many, target: Phase, via: phases}
+      - {kind: has_many, target: Standing, via: standings}
+      - {kind: has_one, target: Videogame, via: videogame}
+  - name: Phase
+    relationships:
+      - {kind: belongs_to, target: Event, via: event}
+      - {kind: has_many, target: PhaseGroup, via: phaseGroups}
+  - name: PhaseGroup
+    relationships:
+      - {kind: belongs_to, target: Phase, via: phase}
+      - {kind: has_many, target: Set, via: sets}
+      - {kind: has_many, target: Seed, via: seeds}
+  - name: Set
+    description: A single match/set between entrants; reported via reportBracketSet.
+    relationships:
+      - {kind: belongs_to, target: PhaseGroup, via: phaseGroup}
+      - {kind: has_many, target: SetSlot, via: slots}
+      - {kind: has_one, target: Entrant, via: winner}
+  - name: Entrant
+    relationships:
+      - {kind: belongs_to, target: Event, via: event}
+      - {kind: has_many, target: Participant, via: participants}
+  - name: Participant
+    relationships:
+      - {kind: has_one, target: Player, via: player}
+      - {kind: has_one, target: User, via: user}
+  - name: Player
+    relationships:
+      - {kind: has_many, target: PlayerRank, via: rankings}
+      - {kind: has_one, target: User, via: user}
+  - name: User
+    description: A start.gg account; currentUser query returns the authenticated user.
+    relationships:
+      - {kind: has_many, target: Tournament, via: tournaments}
+      - {kind: has_many, target: League, via: leagues}
+      - {kind: has_one, target: Player, via: player}
+  - name: Videogame
+    relationships:
+      - {kind: has_many, target: Character, via: characters}
+  - name: Standing
+    relationships:
+      - {kind: belongs_to, target: Entrant, via: entrant}
+  - name: Stream
+    relationships:
+      - {kind: belongs_to, target: Tournament, via: tournament}

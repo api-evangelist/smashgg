@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/authentication
+docs: https://developer.start.gg/docs/authentication
+summary:
+  types: [http, oauth2]
+  http_scheme: bearer
+  oauth2_flows: [authorizationCode]
+  notes: >-
+    start.gg's GraphQL API accepts two token types. A personal access token
+    (created in Developer Settings, expires after 1 year) authenticates
+    application-owned requests. OAuth 2.0 authorization-code tokens act on
+    behalf of an end user, scoped to what the user approves.
+schemes:
+  - name: PersonalAccessToken
+    type: http
+    scheme: bearer
+    in: header
+    header: Authorization
+    format: 'Authorization: Bearer [token]'
+    creation: https://start.gg developer settings ("Create new token")
+    expiry: 1 year
+    notes: Copy the token immediately on creation - it is not shown again.
+    docs: https://developer.start.gg/docs/authentication
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://start.gg/oauth/authorize
+        tokenUrl: https://api.start.gg/oauth/access_token
+        refresh: true
+        access_token_ttl_seconds: 604800
+        token_type: Bearer
+        scopes:
+          - user.identity
+          - user.email
+          - tournament.manager
+          - tournament.reporter
+    docs: https://developer.start.gg/docs/oauth/oauth-overview

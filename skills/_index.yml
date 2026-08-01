@@ -1,0 +1,12 @@
+generated: '2026-07-21'
+method: generated
+source: https://developer.start.gg/docs (grounded in documented GraphQL operations)
+skills:
+  - file: smashgg-query-tournament-data.md
+    name: Query start.gg tournament and event data
+    api: https://api.start.gg/gql/alpha
+    operations: [tournament, event, currentUser]
+  - file: smashgg-report-set-results.md
+    name: Report a set result on start.gg
+    api: https://api.start.gg/gql/alpha
+    operations: [reportBracketSet]

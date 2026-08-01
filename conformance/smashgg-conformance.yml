@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs
+standards:
+  - id: graphql
+    conforms: true
+    evidence: Single GraphQL endpoint at https://api.start.gg/gql/alpha (Query + Mutation roots).
+  - id: oauth2
+    conforms: true
+    evidence: Authorization-code grant + refresh token documented (authorize/token URLs, scopes).
+  - id: relay-connections
+    conforms: true
+    evidence: List fields expose *Connection types with PageInfo cursor pagination.
+  - id: oidc
+    conforms: false
+    evidence: OAuth2 only; no OpenID Connect discovery or id_token documented.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom '{success,message}' envelope / GraphQL errors array, not application/problem+json.
+notes: >-
+  Derived from documented behavior. start.gg publishes no formal compliance
+  certifications (SOC 2 / ISO 27001 / PCI) on a trust center, so no Compliance
+  pointer is emitted.

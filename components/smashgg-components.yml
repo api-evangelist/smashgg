@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/widgets/registration
+components:
+  - family: Embeds
+    name: Embedded Tournament Registration
+    kind: iframe-embed
+    description: >-
+      Embed a tournament's registration form on your own website. The embed
+      code is generated from the Registration Settings page in tournament admin.
+    embed_snippet: '<iframe src="https://start.gg/tournament/${tournamentSlug}/register/embed" frameborder="1" height="600" width="100%"></iframe>'
+    docs: https://developer.start.gg/docs/widgets/registration
+notes: >-
+  start.gg documents client-side "Widgets & Embeds". The embedded registration
+  widget is the one publicly documented surface; the embed code is copy-pasted
+  from each tournament's admin settings.

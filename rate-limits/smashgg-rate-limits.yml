@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/rate-limits
+docs: https://developer.start.gg/docs/rate-limits
+rate_limits:
+  - name: request-rate
+    limit_count: 80
+    window_seconds: 60
+    scope: api-token
+    description: You may not average more than 80 requests per 60 seconds.
+    exceeded_response: '{ "success": false, "message": "Rate limit exceeded - api-token" }'
+  - name: query-complexity
+    limit_count: 1000
+    unit: objects-per-request
+    description: >-
+      A maximum of 1000 objects may be returned by each request (including
+      nested objects). Requests exceeding this are rejected.
+    exceeded_response: '{ "success": false, "fields": null, "message": "Query complexity too high. A maximum of 1000 objects may be returned by each request." }'
+notes: >-
+  Limits protect against malicious attacks and unintended for-loops. Exceeding
+  either limit rejects the request.

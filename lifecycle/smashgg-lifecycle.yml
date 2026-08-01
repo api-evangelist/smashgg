@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/sending-requests
+versioning:
+  scheme: path-segment
+  current: alpha
+  endpoint: https://api.start.gg/gql/alpha
+  notes: >-
+    The GraphQL endpoint is versioned by the "alpha" path segment. start.gg
+    migrated from a retired REST API to this single GraphQL endpoint.
+tokens:
+  personal_access_token_expiry: 1 year
+  oauth_access_token_ttl_seconds: 604800
+  oauth_refresh_token: true
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support documented.
+status_page: null
+sla: null
+notes: >-
+  No public status page, SLA, or dated deprecation policy was found on the
+  developer portal or main site as of the enrichment date.

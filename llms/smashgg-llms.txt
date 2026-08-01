@@ -1,0 +1,37 @@
+# start.gg (smash.gg) API
+
+> start.gg (formerly smash.gg) is a competitive-gaming and esports platform for running tournaments, brackets, and leagues. Its public API is a single GraphQL endpoint that exposes tournaments, events, entrants, sets, standings, players, and users, plus mutations for reporting set results and managing brackets. smash.gg was acquired by Microsoft and now redirects to start.gg.
+
+## API
+- [GraphQL endpoint](https://api.start.gg/gql/alpha): Single GraphQL endpoint (POST, application/json). Versioned as "alpha".
+- [Developer Portal](https://developer.start.gg): Getting started, guides, examples, API explorer.
+- [Schema reference](https://developer.start.gg/reference): Full GraphQL schema (Query, Mutation, objects, enums).
+- [API Explorer](https://developer.start.gg/explorer): Interactive GraphQL explorer (requires a token).
+
+## Auth
+- [Authentication](https://developer.start.gg/docs/authentication): Personal access token (Bearer, 1-year expiry) created in Developer Settings.
+- [OAuth Overview](https://developer.start.gg/docs/oauth/oauth-overview): OAuth 2.0 authorization-code flow + refresh token, acting on behalf of a user.
+- [OAuth Scopes](https://developer.start.gg/docs/oauth/scopes): user.identity, user.email, tournament.manager, tournament.reporter.
+
+## Docs
+- [Sending Requests](https://developer.start.gg/docs/sending-requests): POST body shape and endpoint.
+- [Rate Limits](https://developer.start.gg/docs/rate-limits): 80 requests / 60s; max 1000 objects per request.
+- [Query Examples](https://developer.start.gg/docs/examples/queries/get-event): Real query examples.
+- [Mutation Examples](https://developer.start.gg/docs/examples/mutations/report-set): reportBracketSet examples.
+- [Widgets & Embeds](https://developer.start.gg/docs/widgets/registration): Embeddable tournament registration.
+
+## Repo artifacts
+- [Authentication profile](authentication/smashgg-authentication.yml)
+- [OAuth scopes](scopes/smashgg-scopes.yml)
+- [Conventions](conventions/smashgg-conventions.yml)
+- [Rate limits](rate-limits/smashgg-rate-limits.yml)
+- [Error codes](errors/smashgg-error-codes.yml)
+- [Data model](data-model/smashgg-data-model.yml)
+- [Agent skills](skills/_index.yml)
+
+## More
+- [Blog](https://blog.start.gg/)
+- [Help center](https://help.start.gg)
+- [GitHub org](https://github.com/smashgg)
+- [Terms of Service](https://www.start.gg/about/tos)
+- [Privacy Policy](https://www.start.gg/about/privacy)

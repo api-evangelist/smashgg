@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.start.gg/docs/oauth/scopes
+docs: https://developer.start.gg/docs/oauth/scopes
+schemes:
+  - name: OAuth2
+    source: https://developer.start.gg/docs/oauth/oauth-overview
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://start.gg/oauth/authorize
+        tokenUrl: https://api.start.gg/oauth/access_token
+scopes:
+  - scope: user.identity
+    description: >-
+      Allows use of the currentUser query and all public fields for the user.
+      Any private fields require additional scopes.
+    flows: [authorizationCode]
+  - scope: user.email
+    description: >-
+      Allows use of the email field in the currentUser query. The
+      user.identity scope is also required for this to work.
+    flows: [authorizationCode]
+  - scope: tournament.manager
+    description: >-
+      Allows access to tournament seeding and bracket setup for tournaments
+      the current user has access to.
+    flows: [authorizationCode]
+  - scope: tournament.reporter
+    description: >-
+      Allows access to set reporting for tournaments the current user has
+      access to.
+    flows: [authorizationCode]
+notes: >-
+  start.gg notes that new scopes are still actively being developed, so this
+  list may grow. Scopes are requested by the third-party application and
+  approved by the resource owner at authentication time.
